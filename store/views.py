@@ -16,5 +16,5 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Category.objects.all() # Модель Category вместо Product
     serializer_class = CategorySerializer
