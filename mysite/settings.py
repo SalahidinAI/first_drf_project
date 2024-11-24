@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'store',
-    'django_filters'
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # обязательно надо добавить
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -119,8 +121,19 @@ TIME_ZONE = 'Asia/Bishkek'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
+LANGUAGES = (
+    ('ky', 'Kyrgyz'),
+    ('en', 'English'),
+    ('ru', 'Russian'),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+
+MODELTRANSLATION_LANGUAGE = ('ky', 'en', 'ru')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
