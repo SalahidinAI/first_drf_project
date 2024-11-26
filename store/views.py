@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .serializers import *
 from .models import *
 from django_filters.rest_framework import DjangoFilterBackend
@@ -13,6 +13,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     filterset_class = ProductFilter
     search_fields = ['product_name']
     ordering_fields = ['product_name', 'price', 'created_date']
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
